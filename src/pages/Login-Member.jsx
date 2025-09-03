@@ -4,6 +4,7 @@ import { useUserLoginMutation } from "../store/api/User";
 import { setUser } from "../store/slice/Authslice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "lucide-react";
 
 export default function LoginMember() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function LoginMember() {
       const res = await userLogin(LoginData).unwrap();
       dispatch(setUser(res.data));
       localStorage.setItem("user", JSON.stringify(res.data));
-      navigate("/Menu");
+      navigate("/");
       toast.success(res.message);
     } catch (err) {
       toast.error(err?.data?.message);
@@ -62,9 +63,9 @@ export default function LoginMember() {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-orange-500 text-white rounded-xl cursor-pointer px-2 py-2 font-semibold text-lg"
+            className="bg-orange-500 flex justify-center text-white rounded-xl cursor-pointer px-2 py-2 font-semibold text-lg"
           >
-            {isLoading ? "Loading..." : "Login As Member"}
+            {isLoading ? <Loader /> : "Login As Member"}
           </button>
         </form>
       </div>

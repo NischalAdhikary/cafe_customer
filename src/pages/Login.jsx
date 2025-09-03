@@ -17,7 +17,7 @@ export default function Login() {
       <div className="w-full md:w-1/3 z-50 relative h-full rounded-xl bg-white p-4 flex flex-col items-center gap-8  ">
         <div
           className=" cursor-pointer p-2 absolute w-12 h-12 text-center text-2xl font-semibold left-4"
-          onClick={() => navigate("/Menu")}
+          onClick={() => navigate("/")}
         >
           <ArrowLeft />
         </div>

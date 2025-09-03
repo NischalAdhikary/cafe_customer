@@ -8,7 +8,7 @@ export default function Profile() {
   const user = useSelector((state) => state.authUser.user);
   const [userLogout, { isLoading }] = useUserLogoutMutation();
   const dispatch = useDispatch();
-
+  console.log(user);
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
@@ -16,7 +16,7 @@ export default function Profile() {
     }
   }, [user]);
   const handleLogout = async () => {
-    navigate("/menu");
+    navigate("/");
     await userLogout();
     dispatch(removeUser());
   };
@@ -29,14 +29,29 @@ export default function Profile() {
         <p className="text-gray-500">{user?.email}</p>
 
         <div className="mt-6 w-full space-y-4">
+          {user?.role === "admin" && (
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl transition"
+            >
+              Dashboard
+            </button>
+          )}
           <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-xl transition">
             Orders
           </button>
+
           <button
             onClick={handleLogout}
             className="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition"
           >
-            {isLoading ? <span>Loading...</span> : <span>Logout</span>}
+            {isLoading ? (
+              <span>
+                <LoadingSpinner />
+              </span>
+            ) : (
+              <span>Logout</span>
+            )}
           </button>
         </div>
       </div>

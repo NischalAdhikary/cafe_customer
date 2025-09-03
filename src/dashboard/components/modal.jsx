@@ -18,7 +18,7 @@ export default function Modal({ children, onClose }) {
   return (
     <div
       ref={divref}
-      className="fixed w-[80vw] md:w-[30vw] inset-0 flex  bg-gray-100 shadow bg-opacity-50 z-50"
+      className="fixed w-[80vw] md:w-[30vw] inset-0 flex  bg-gray-50 shadow bg-opacity-50 z-50"
     >
       <div className="flex-col w-full ">{children}</div>
     </div>

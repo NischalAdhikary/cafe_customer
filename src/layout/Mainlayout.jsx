@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navtab from "../components/Navtab";
+import Navtab from "../dashboard/components/Navtab";
 // export default function Mainlayout() {
 //   return (
 //     <div className='w-full h-screen relative '>

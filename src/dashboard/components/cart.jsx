@@ -1,12 +1,13 @@
 import { Plus, Minus } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../store/slice/Cartsitems";
+import { addToCart, removeFromCart } from "../../store/slice/Cartsitems";
+// import { addToCart, removeFromCart } from "../store/slice/Cartsitems";
 
 export default function Cart({ count, item }) {
   const dispatch = useDispatch();
 
   const handleRemove = () => {
-    dispatch(removeFromCart({ id: item.id }));
+    dispatch(removeFromCart(item));
   };
 
   const handleAdd = () => {

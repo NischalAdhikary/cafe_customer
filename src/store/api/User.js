@@ -27,6 +27,35 @@ export const Userapi = createApi({
         method: "GET",
       }),
     }),
+    getAllCustomers: builder.query({
+      query: () => "/customers",
+    }),
+    deleteUser: builder.mutation({
+      query: (userid) => ({
+        url: `/delete/${userid}`,
+        method: "DELETE",
+      }),
+    }),
+    editUser: builder.mutation({
+      query: (user) => ({
+        url: `/edit/${user.userid}`,
+        method: "PATCH",
+        body: user,
+      }),
+    }),
+    createCustomer: builder.mutation({
+      query: (customer) => ({
+        url: "/createcustomer",
+        method: "POST",
+        body: customer,
+      }),
+    }),
+    getAvailableCustomers: builder.query({
+      query: () => `/availablecustomers`,
+    }),
+    verifyUser: builder.query({
+      query: () => `/verifyuser`,
+    }),
   }),
 });
 
@@ -34,4 +63,10 @@ export const {
   useUserLoginMutation,
   useUserRegisterMutation,
   useUserLogoutMutation,
+  useGetAllCustomersQuery,
+  useDeleteUserMutation,
+  useEditUserMutation,
+  useCreateCustomerMutation,
+  useGetAvailableCustomersQuery,
+  useVerifyUserQuery,
 } = Userapi;

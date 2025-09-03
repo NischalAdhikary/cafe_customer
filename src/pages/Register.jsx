@@ -6,7 +6,7 @@ export default function Register() {
   const [userRegister, { isLoading }] = useUserRegisterMutation();
 
   const [createUser, setCreateUser] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     phone: "",
@@ -20,7 +20,7 @@ export default function Register() {
     try {
       const res = await userRegister(createUser).unwrap();
       toast.success(res.message);
-      setCreateUser({ username: "", email: "", password: "", phone: "" });
+      setCreateUser({ name: "", email: "", password: "", phone: "" });
     } catch (err) {
       console.error("Registration Error:", err);
       toast.error(err?.data?.message || "Registration failed");
@@ -48,8 +48,8 @@ export default function Register() {
             onChange={handleChange}
             autoComplete="off"
             placeholder="Full Name"
-            name="username"
-            value={createUser.username}
+            name="name"
+            value={createUser.name}
             className="w-full p-3 text-semibold  rounded-md my-2 border-2 border-orange-500"
           ></input>
           <input
